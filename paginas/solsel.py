@@ -90,7 +90,7 @@ if st.button("Resolver"):
         ax.scatter(solucion[0], solucion[1], color="red", label="Solución")
         ax.axhline(0, color='black', linewidth=0.7)  
         ax.axvline(0, color='black', linewidth=0.7)  
-        ax.legend()  # Mostrar etiquetas
+        ax.legend()  
         ax.set_title("Gráfica de las rectas y su solución")
         ax.set_xlabel("x")
         ax.set_ylabel("y")
