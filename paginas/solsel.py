@@ -29,6 +29,12 @@ def gauss(A,b):
     pasos.append(("Solución final", v_sol))
     return np.array([x1, x2]), pasos
 
+def matrix_to_latex(matrix):
+    latex = "\\begin{bmatrix}"
+    for i in matrix:
+        latex += " & ".join([f"{elem:.2f}" for elem in i]) + " \\\\ "
+    latex += "\\end{bmatrix}"
+    return latex
 
 st.title("Solucionador de Sistemas de Ecuaciones lineales 2D")
 
@@ -63,10 +69,10 @@ if st.button("Resolver"):
         st.subheader("Pasos de la solución")
         for npasos, matrix in pasos:
             st.markdown(f"{npasos}")
-            st.dataframe(pd.DataFrame(matrix))
+            st.latex(matrix_to_latex(matrix))
 
         st.subheader("Solucion")
-        st.markdown(f"x1 = {solucion[0]:.2f}, x2 = {solucion[1]:.2f}") 
+        st.markdown(f"x = {solucion[0]:.2f}, y = {solucion[1]:.2f}") 
         
         
         x = np.linspace(-10,10,400)
@@ -93,7 +99,6 @@ if st.button("Resolver"):
         ax.legend()  
         ax.set_title("Gráfica de las rectas y su solución")
         ax.set_xlabel("x")
-        ax.set_ylabel("y")
         st.pyplot(fig)
 
 
